@@ -1,0 +1,332 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0f;--surface:#131316;--surface2:#1a1a1f;--surface3:#222228;
+  --text:#e8e6e1;--muted:#888890;--border:#2a2a32;--border2:#353540;
+  --accent:#7c9eff;--accent-dim:#3d5fc4;--accent-bg:#151c35;
+  --green:#4ade80;--green-bg:#0f2018;--green-border:#1a3828;
+  --amber:#fbbf24;--amber-bg:#1f1800;--amber-border:#2e2200;
+  --purple:#a78bfa;--purple-bg:#1a1030;--purple-border:#2e1a50;
+  --teal:#2dd4bf;--teal-bg:#0a1e1c;--teal-border:#0f3030;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,13,15,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 2.5rem;height:60px;
+}
+.nav-logo{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--accent);letter-spacing:0.06em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+
+section{padding:5rem 2.5rem;max-width:900px;margin:0 auto}
+
+#hero{padding-top:7rem;padding-bottom:6rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.eyebrow{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1rem}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,6vw,4.2rem);line-height:1.06;color:var(--text);margin-bottom:1.2rem}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:15px;color:var(--muted);max-width:480px;margin-bottom:0.8rem;font-weight:300}
+.hero-contact{display:flex;flex-wrap:wrap;gap:0.4rem 1.2rem;margin-bottom:2rem}
+.hero-contact a{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:0.04em;opacity:0.7;transition:opacity 0.2s}
+.hero-contact a:hover{opacity:1}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);color:#fff;padding:11px 22px;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--accent);transition:opacity 0.2s}
+.cta:hover{opacity:0.88}
+.avatar{width:120px;height:120px;border-radius:50%;background:var(--accent-bg);border:2px solid var(--accent-dim);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0}
+
+.divider{height:1px;background:var(--border);max-width:900px;margin:0 auto}
+
+.sec-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1.5rem}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text{font-size:15px;color:var(--muted);font-weight:300}
+.about-text p+p{margin-top:0.9rem}
+.stat-list{display:flex;flex-direction:column;gap:0.9rem}
+.stat-item{padding:1rem 1.25rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);line-height:1}
+.stat-desc{font-size:12px;color:var(--muted);margin-top:2px}
+
+.exp-item{padding:1.5rem 1.75rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
+.exp-role{font-size:15px;font-weight:500;color:var(--text)}
+.exp-co{font-size:13px;color:var(--muted);margin-top:2px}
+.exp-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.04em;flex-shrink:0;margin-left:1rem;margin-top:2px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.exp-bullets li{font-size:13px;color:var(--muted);font-weight:300;padding-left:1rem;position:relative}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--accent);opacity:0.5}
+
+.cat-block{margin-bottom:2.5rem}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.cat-badge{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:5px;border:1px solid}
+.cat-badge.fullstack{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.cat-badge.devops{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.cat-badge.ml{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.cat-line{flex:1;height:1px;background:var(--border)}
+
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.6rem;margin-bottom:1rem;transition:border-color 0.2s}
+.project-card:hover{border-color:var(--border2)}
+.project-card.fullstack:hover{border-color:var(--purple-border)}
+.project-card.devops:hover{border-color:var(--teal-border)}
+.project-card.ml:hover{border-color:var(--amber-border)}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem}
+.proj-title{font-size:15px;font-weight:500;color:var(--text)}
+.proj-star{font-family:'DM Mono',monospace;font-size:10px;padding:2px 8px;border-radius:4px;flex-shrink:0;margin-left:0.75rem;margin-top:2px}
+.proj-star.featured{background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent-dim)}
+.proj-desc{font-size:13px;color:var(--muted);font-weight:300;margin-bottom:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-family:'DM Mono',monospace;font-size:10px;background:var(--surface3);color:var(--muted);padding:3px 9px;border-radius:4px;border:1px solid var(--border);letter-spacing:0.03em}
+.tag.purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.tag.teal{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.tag.amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem}
+.skill-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.7rem}
+.skill-pills{display:flex;flex-wrap:wrap;gap:5px}
+.skill-pill{font-size:12px;color:var(--muted);background:var(--surface2);padding:3px 9px;border-radius:5px;border:1px solid var(--border)}
+
+.certs-list{display:flex;flex-direction:column;gap:0.7rem;margin-top:2rem}
+.cert-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:10px}
+.cert-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;opacity:0.6}
+.cert-text{font-size:13px;color:var(--muted);font-weight:300}
+
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:3rem;text-align:center}
+.contact-heading{font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:0.75rem;line-height:1.2;color:var(--text)}
+.contact-sub{color:var(--muted);font-size:14px;font-weight:300;margin-bottom:2rem}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:0.75rem}
+.contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:7px;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s;border:1px solid var(--border);color:var(--muted);background:var(--surface2)}
+.contact-btn:hover{border-color:var(--accent);color:var(--accent)}
+.contact-btn.primary{background:var(--accent-dim);color:#fff;border-color:var(--accent)}
+.contact-btn.primary:hover{opacity:0.88;color:#fff}
+
+footer{text-align:center;padding:2.5rem;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);border-top:1px solid var(--border);letter-spacing:0.04em}
+@media(max-width:640px){
+  nav{padding:0 1.25rem}
+  section{padding:3.5rem 1.25rem}
+  #hero{grid-template-columns:1fr}
+  .avatar{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+
+<nav>
+  <span class="nav-logo">sreejith.dev</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div>
+    <p class="eyebrow">Software Engineer</p>
+    <h1 class="hero-name">Hi, I'm<br><em>Sreejith</em></h1>
+    <p class="hero-sub">Python developer & cloud enthusiast — building scalable full-stack apps and automating everything in between.</p>
+    <div class="hero-contact">
+      <a href="mailto:rsreejith926@gmail.com">rsreejith926@gmail.com</a>
+      <a href="https://linkedin.com/in/sreejith1" target="_blank">linkedin.com/in/sreejith1</a>
+      <a href="https://github.com/Rsreesree" target="_blank">github.com/Rsreesree</a>
+    </div>
+    <a href="#contact" class="cta">Get in touch →</a>
+  </div>
+  <div class="avatar">S</div>
+</section>
+
+<div class="divider"></div>
+
+<section id="about">
+  <p class="sec-label">About Me</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Software Engineer with a strong foundation in Python development, full-stack web technologies, and cloud-integrated application design.</p>
+      <p>I love building RESTful APIs, deploying scalable apps on AWS, and automating workflows with CI/CD pipelines. Clean, maintainable code is non-negotiable.</p>
+      <p>Finishing my B.E. in Computer Engineering at GKM College of Engineering and Technology — Class of 2025.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-desc">Projects shipped end-to-end</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-desc">RESTful API endpoints designed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">30%</div>
+        <div class="stat-desc">User engagement lift at Krisc</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="experience">
+  <p class="sec-label">Experience</p>
+  <div class="exp-item">
+    <div class="exp-header">
+      <div>
+        <p class="exp-role">Python Developer Intern</p>
+        <p class="exp-co">Krisc</p>
+      </div>
+      <span class="exp-date">2024</span>
+    </div>
+    <ul class="exp-bullets">
+      <li>Designed and deployed responsive web apps using Python (Flask), HTML, CSS, and JavaScript</li>
+      <li>Improved user engagement by 30% through interactive UI components and mobile-first design</li>
+      <li>Built and consumed RESTful API endpoints with proper request handling and error management</li>
+      <li>Collaborated in Agile sprints — standups, sprint planning, and on-schedule delivery</li>
+      <li>Wrote reusable Python modules to reduce code duplication across projects</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <p class="sec-label">Projects</p>
+
+  <div class="cat-block">
+    <div class="cat-header">
+      <span class="cat-badge fullstack">Full-Stack Apps</span>
+      <div class="cat-line"></div>
+    </div>
+
+    <div class="project-card fullstack">
+      <div class="proj-header">
+        <p class="proj-title">LabSoft – Laboratory Management System</p>
+        <span class="proj-star featured">Featured</span>
+      </div>
+      <p class="proj-desc">Full-stack desktop lab management system with 50+ API endpoints covering patient/doctor CRUD, multi-stage report workflows, automated PDF generation, RSA machine-locked licensing, and PyInstaller packaging.</p>
+      <div class="proj-tags">
+        <span class="tag purple">Python</span><span class="tag purple">Flask</span><span class="tag purple">SQLite</span><span class="tag">ReportLab</span><span class="tag">xhtml2pdf</span><span class="tag">PyInstaller</span><span class="tag">AES/RSA</span>
+      </div>
+    </div>
+
+    <div class="project-card fullstack">
+      <div class="proj-header">
+        <p class="proj-title">RestoBill – Restaurant Billing & POS</p>
+        <span class="proj-star featured">Featured</span>
+      </div>
+      <p class="proj-desc">Full-featured desktop POS supporting dine-in, takeaway, and delivery with token-based queue management, GST/SGST/CGST auto-calculation, thermal printer support (ESC/POS), PDF/Excel reporting, and SHA-256 auth.</p>
+      <div class="proj-tags">
+        <span class="tag purple">Python</span><span class="tag purple">Tkinter</span><span class="tag purple">SQLite</span><span class="tag">ESC/POS</span><span class="tag">openpyxl</span><span class="tag">ReportLab</span><span class="tag">PyInstaller</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-header">
+      <span class="cat-badge devops">Cloud & DevOps</span>
+      <div class="cat-line"></div>
+    </div>
+
+    <div class="project-card devops">
+      <div class="proj-header">
+        <p class="proj-title">CI/CD Pipeline – Jenkins + Git + AWS</p>
+      </div>
+      <p class="proj-desc">Automated build, test, and deployment for Python apps via Jenkins and GitHub. Apps deployed to AWS EC2 behind an Application Load Balancer, with IAM roles configured on least-privilege principles.</p>
+      <div class="proj-tags">
+        <span class="tag teal">Jenkins</span><span class="tag teal">GitHub</span><span class="tag teal">AWS EC2</span><span class="tag teal">ALB</span><span class="tag teal">IAM</span><span class="tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="project-card devops">
+      <div class="proj-header">
+        <p class="proj-title">AWS Cloud Infrastructure & Python Automation</p>
+      </div>
+      <p class="proj-desc">Custom VPC with public/private subnets, security groups, route tables, and EC2 with Auto Scaling. Python scripts automating DevOps tasks: log processing, file handling, config validation, and deployment workflows.</p>
+      <div class="proj-tags">
+        <span class="tag teal">AWS VPC</span><span class="tag teal">EC2</span><span class="tag teal">Auto Scaling</span><span class="tag teal">Route 53</span><span class="tag">Python</span><span class="tag">Bash</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-block">
+    <div class="cat-header">
+      <span class="cat-badge ml">Machine Learning</span>
+      <div class="cat-line"></div>
+    </div>
+
+    <div class="project-card ml">
+      <div class="proj-header">
+        <p class="proj-title">Mall Customer Segmentation</p>
+      </div>
+      <p class="proj-desc">Unsupervised ML model using K-Means clustering to segment customers by spending behaviour. Includes exploratory data analysis and visualisations to surface actionable business insights.</p>
+      <div class="proj-tags">
+        <span class="tag amber">Python</span><span class="tag amber">scikit-learn</span><span class="tag amber">pandas</span><span class="tag amber">matplotlib</span><span class="tag amber">K-Means</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="skills">
+  <p class="sec-label">Skills</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-title">Languages</p>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span><span class="skill-pill">JavaScript</span><span class="skill-pill">SQL</span><span class="skill-pill">Bash</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-title">Web</p>
+      <div class="skill-pills">
+        <span class="skill-pill">Flask</span><span class="skill-pill">REST APIs</span><span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">MySQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-title">Cloud & DevOps</p>
+      <div class="skill-pills">
+        <span class="skill-pill">AWS EC2</span><span class="skill-pill">S3</span><span class="skill-pill">VPC</span><span class="skill-pill">IAM</span><span class="skill-pill">Jenkins</span><span class="skill-pill">CI/CD</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-title">Tools</p>
+      <div class="skill-pills">
+        <span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">Docker</span><span class="skill-pill">Linux</span><span class="skill-pill">Shell</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-title">Concepts</p>
+      <div class="skill-pills">
+        <span class="skill-pill">OOP</span><span class="skill-pill">MVC</span><span class="skill-pill">Agile</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="sec-label" style="margin-top:2.5rem">Certifications</p>
+  <div class="certs-list">
+    <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">IBM SkillsBuild – Journey to Cloud</span></div>
+    <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">Chegg Skills for Students – Python for Software Engineering</span></div>
+    <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">Vodafone Idea Foundation – Introduction to Full Stack Web Development</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="contact-card">
+    <h2 class="contact-heading">Let's build something.</h2>
+    <p class="contact-sub">Open to full-time roles, internships, and interesting projects. Always happy to connect.</p>
+    <div class="contact-links">
+      <a href="mailto:rsreejith926@gmail.com" class="contact-btn primary">Send an email</a>
+      <a href="https://github.com/Rsreesree" target="_blank" class="contact-btn">GitHub ↗</a>
+      <a href="https://linkedin.com/in/sreejith1" target="_blank" class="contact-btn">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>sreejith · software engineer · 2025</footer>
