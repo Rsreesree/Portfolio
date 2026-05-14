@@ -31,16 +31,18 @@ pipeline {
         stage('Deploy') {
             steps {
 
-                echo 'Deploy Stage'
+                sh 'ls -la'
 
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
-                ]]) {
+        withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'aws-creds'
+        ]]) {
 
-                    sh '''
-                    aws s3 sync . s3://jenkins-0s3
-                    '''
+            sh '''
+            aws --version
+            aws s3 ls s3://jenkins-0s3
+            aws s3 sync . s3://jenkins-0s3 --debug
+            '''
                 }
             }
         }
