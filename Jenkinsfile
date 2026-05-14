@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        AWS_DEFAULT_REGION = 'ap-south-1'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -20,15 +24,36 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Test Stage'
-                sh 'exit 1'
+                sh 'echo Test Done'
             }
         }
 
         stage('Deploy') {
             steps {
+
                 echo 'Deploy Stage'
-                sh 'echo Deploy Done'
+
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]]) {
+
+                    sh '''
+                    aws s3 sync . s3://YOUR-BUCKET-NAME
+                    '''
+                }
             }
+        }
+    }
+
+    post {
+
+        success {
+            echo 'Pipeline SUCCESS'
+        }
+
+        failure {
+            echo 'Pipeline FAILED'
         }
     }
 }
