@@ -39,7 +39,7 @@ pipeline {
                 ]]) {
 
                     sh '''
-                    aws s3 sync . s3://YOUR-BUCKET-NAME
+                    aws s3 sync . s3://jenkins-0s3
                     '''
                 }
             }
